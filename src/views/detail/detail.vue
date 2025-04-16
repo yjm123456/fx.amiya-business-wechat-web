@@ -44,7 +44,11 @@
         </div>
 
         <div class="item_f">
+          <span>省份：{{ $route.query.orderInfo.province }}</span>
           <span>城市：{{ $route.query.orderInfo.city }}</span>
+          
+        </div>
+        <div class="item_f">
           <span
             >新老客业绩：{{
               $route.query.orderInfo.isOldCustomer == true
@@ -52,16 +56,14 @@
                 : "新客业绩"
             }}</span
           >
-        </div>
-        <div class="item_f">
           <span>获客方式：{{ $route.query.orderInfo.getCustomerTypeText }}</span>
+        </div>
+        <div class="item_f">
           <span>客户类型：{{ $route.query.orderInfo.customerTypeText }}</span>
-        </div>
-        <div class="item_f">
           <span>客户来源：{{ $route.query.orderInfo.customerSourceText }}</span>
-          <span>归属部门：{{ $route.query.orderInfo.belongChannelText }}</span>
         </div>
         <div class="item_f">
+          <span>归属部门：{{ $route.query.orderInfo.belongChannelText }}</span>
           <span>是否为日不落直播：{{ $route.query.orderInfo.isRiBuLuoLiving == true ? '是' : '否' }}</span>
         </div>
 
@@ -177,7 +179,7 @@
         </div>
         <div class="item_f">
           <span>业绩类型：{{ $route.query.orderInfo.dealPerformanceTypeText }}</span>
-          <!-- <span>获客方式：{{ $route.query.orderInfo.getCustomerTypeText }}</span> -->
+          <span>归属公司：{{ $route.query.orderInfo.belongCompanyName }}</span>
         </div>
         <!-- <div class="item_w">
           <span

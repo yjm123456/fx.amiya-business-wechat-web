@@ -19,6 +19,13 @@
         disabled
       />
       <van-field
+        v-model="form.province"
+        label="省份"
+        placeholder="请输入省份"
+        class="customer_content"
+        @input="provinceInput"
+      />
+      <van-field
         v-model="form.city"
         label="城市"
         placeholder="请输入城市"
@@ -132,7 +139,7 @@ export default {
     return {
       currentDate: "",
       minDate: new Date(2020, 1, 1),
-      maxDate: new Date(2025, 1, 1),
+      maxDate: new Date(2028, 1, 1),
       // 用于页面展示
       form: {
         // 客户昵称
@@ -149,6 +156,8 @@ export default {
         wechatNumber: "",
         // 城市
         city: "",
+        // 省份
+        province:''
         
       },
       // 用于传给接口id
@@ -169,7 +178,9 @@ export default {
         city: "",
         imgList:[],
         // 是否为日不落直播
-        isRiBuLuoLiving:false
+        isRiBuLuoLiving:false,
+        // 省份
+        province:''
       },
       
       // model
@@ -222,7 +233,7 @@ export default {
       });
     },
     nextStep() {
-      const { customerName, phone, city ,sex} = this.form;
+      const { customerName, phone, province,city ,sex} = this.form;
 
       if (!customerName) {
         this.$toast("请输入客户昵称");
@@ -235,6 +246,10 @@ export default {
       if (!/^1[3456789]\d{9}$/.test(phone)) {
         this.$toast("请输入正确的手机号");
         return false;
+      }
+      if (!province) {
+        this.$toast("请输入省份");
+        return;
       }
       if (!city) {
         this.$toast("请输入城市");
@@ -277,6 +292,10 @@ export default {
       this.form.city = value;
       this.form2.city = value;
     },
+    provinceInput(value) {
+      this.form.province = value;
+      this.form2.province = value;
+    },
     // // 弹出时间选择框
     // showBirthFn() {
     //   this.model.birthdayModel = true;
@@ -299,7 +318,7 @@ export default {
     },
   },
   created() {
-    const {customerName,sex,birthday,occupation,wechatNumber,phone,city,customerPictures,isRiBuLuoLiving} = this.$route.query.orderInfo
+    const {customerName,sex,birthday,occupation,wechatNumber,phone,province,city,customerPictures,isRiBuLuoLiving} = this.$route.query.orderInfo
     this.form.customerName = customerName
     this.form2.customerName = customerName
     this.form.sex = sex
@@ -315,6 +334,8 @@ export default {
     this.form2.imgList = customerPictures
     this.form.city = city
     this.form2.city = city
+    this.form.province = province
+    this.form2.province = province
     this.form2.isRiBuLuoLiving = isRiBuLuoLiving
     
   },

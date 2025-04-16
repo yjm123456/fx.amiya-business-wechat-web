@@ -30,3 +30,10 @@ export const ShoppingCartRegistrationAssign = (data) => {
         data
     });
 };
+//获取归属公司
+export const getBelongCompanyList = () => {
+    return http({
+        url: "/businessWechat/ShoppingCartRegistration/getBelongCompanyList",
+        method: "get",
+    });
+};

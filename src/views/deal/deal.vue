@@ -319,7 +319,7 @@ export default {
             currentDate2:this.$moment().format("YYYY-MM-DD"),
             currentDate3:this.$moment().format("YYYY-MM-DD"),
             minDate: new Date(2020, 1, 1),
-            maxDate: new Date(2026, 1, 1),
+            maxDate: new Date(2028, 1, 1),
             // 用于页面展示
             form:{
                 // 订单号

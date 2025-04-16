@@ -189,7 +189,7 @@ export default {
       isLoading:false,
       currentDate: this.$moment().format("YYYY-MM-DD"),
       minDate: new Date(2020, 1, 1),
-      maxDate: new Date(2026, 1, 1),
+      maxDate: new Date(2028, 1, 1),
       calendarModel: false,
       // 搜索字段
       query: {

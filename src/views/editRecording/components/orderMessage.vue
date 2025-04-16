@@ -84,6 +84,14 @@
                 type="number"
                 disabled
             />
+            <van-field
+                v-model="form.belongCompanyEnumId"
+                label="归属公司"
+                disabled
+                @click="model.belongCompanyEnumIdModel = true"
+                placeholder="请选择归属公司"
+                class="customer_content"
+            />
         </div>
         <div>
             <van-popup v-model="model.getCustomerTypeModel" round position="bottom">
@@ -111,6 +119,20 @@
                     @cancel="model.customerSourceModel = false"
                     @confirm="customerSourceConfirm"
                 />
+            </van-popup>
+            <!-- 归属公司 -->
+            <van-popup
+                v-model="model.belongCompanyEnumIdModel"
+                round
+                position="bottom"
+                >
+                <van-picker
+                    show-toolbar
+                    :columns="list.belongCompanyEnumIdListName"
+                    @cancel="model.belongCompanyEnumIdModel = false"
+                    @confirm="belongCompanyEnumIdConfirm"
+                >
+                </van-picker>
             </van-popup>
             <van-popup v-model="model.orderTypeModel" round position="bottom">
                 <van-picker
@@ -172,6 +194,7 @@
 </template>
 <script>
 import * as api from "@/api/order.js";
+import * as smallYellowCarRegistrationApi from "@/api/smallYellowCarRegistration.js";
 
 export default {
     props:{
@@ -204,7 +227,9 @@ export default {
                 // 客户类型
                 customerType:null,
                 // 客户来源
-                customerSource:null
+                customerSource:null,
+                // 归属公司
+                belongCompanyEnumId:null,
             },
             // 用于传给接口id
             form2:{
@@ -227,7 +252,9 @@ export default {
                 // 客户类型
                 customerType:null,
                 // 客户来源
-                customerSource:null
+                customerSource:null,
+                // 归属公司
+                belongCompanyEnumId:null,
             },
             // 获取接口数据
             joggle:{
@@ -256,7 +283,9 @@ export default {
                 customerType:null,
                 // 客户来源
                 customerSource:null,
-                getcustomerSourceList:[]
+                getcustomerSourceList:[],
+                // 归属公司
+                belongCompanyEnumIdList:[]
             },
             // model
             model:{
@@ -268,7 +297,8 @@ export default {
                 belongMonthModel:false,
                 getCustomerTypeModel:false,
                 customerTypeModel:false,
-                customerSourceModel:false
+                customerSourceModel:false,
+                belongCompanyEnumIdModel:false
             },
             // 用于页面展示数据
             list:{
@@ -279,12 +309,31 @@ export default {
                 appointmentHospitalIdName:[],
                 getCustomerTypeName:[],
                 getcustomerTypeListNames:[],
-                getcustomerSourceListNames:[]
+                getcustomerSourceListNames:[],
+                belongCompanyEnumIdListName:[]
             },
         }
 
     },
     methods:{
+        // 归属公司
+        belongCompanyEnumIdConfirm(value) {
+            this.form.belongCompanyEnumId = value;
+            this.model.belongCompanyEnumIdModel = false;
+            this.form2.belongCompanyEnumId = this.joggle.belongCompanyEnumIdList.find((item) => value == item.name).id;
+        },
+        // 获客归属公司
+        getbelongCompanyEnumIdListClick() {
+            smallYellowCarRegistrationApi.getBelongCompanyList().then((res) => {
+                if (res.code === 0) {
+                const { belongCompanyList } = res.data;
+                this.joggle.belongCompanyEnumIdList = belongCompanyList;
+                this.list.belongCompanyEnumIdListName = belongCompanyList.map(
+                    (item) => item.name
+                );
+                }
+            });
+        },
         prevStep(){
             this.$emit('edidActive2',{
                 active:0,
@@ -352,6 +401,10 @@ export default {
             }
              if(!addOrderPrice){
                 this.$toast("请输入下单金额");
+                return
+            }
+            if(this.form2.belongCompanyEnumId == null){
+                this.$toast("请选择归属公司");
                 return
             }
 
@@ -554,7 +607,9 @@ export default {
         this.getshoppingCartGetCustomerTypeList()
         this.getcustomerTypeList()
         this.getcustomerSourceList()
-        const {orderType,orderTypeText,depositAmount,appointmentHospitalId,appointmentHospitalName,orderSource,orderSourceText,consultationType,consultationTypeText,belongMonth,addOrderPrice,getCustomerType,getCustomerTypeText,customerSource,customerSourceText,customerType,customerTypeText} = this.$route.query.orderInfo
+        this.getbelongCompanyEnumIdListClick()
+        const {orderType,orderTypeText,depositAmount,appointmentHospitalId,appointmentHospitalName,orderSource,orderSourceText,consultationType,consultationTypeText,belongMonth,addOrderPrice,getCustomerType,getCustomerTypeText,customerSource,customerSourceText,customerType,customerTypeText,belongCompanyEnumId,belongCompanyName} = this.$route.query.orderInfo
+        console.log(this.$route.query.orderInfo)
         this.form.orderType = orderTypeText
         this.form2.orderType = orderType
         this.form.depositAmount = depositAmount
@@ -573,10 +628,12 @@ export default {
         this.form2.getCustomerType = getCustomerType
         this.form.customerType = customerTypeText
         this.form2.customerType = customerType
-        if(customerSource){
+        this.form.belongCompanyEnumId = belongCompanyName
+        this.form2.belongCompanyEnumId = belongCompanyEnumId
+        // if(customerSource){
             this.form.customerSource = customerSourceText
             this.form2.customerSource = customerSource
-        }
+        // }
         this.isPrice = sessionStorage.getItem('isPrice')
     },
      watch: {  //实时监听搜索输入内容

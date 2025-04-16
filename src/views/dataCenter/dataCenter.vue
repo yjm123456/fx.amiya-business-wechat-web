@@ -53,7 +53,7 @@ export default{
             currentDate:  this.$moment().format("YYYY-MM"),
             timeModel:false,
             minDate: new Date(2020, 0, 1),
-            maxDate: new Date(2025, 10, 1),
+            maxDate: new Date(2026, 10, 1),
         }
     },
     methods:{

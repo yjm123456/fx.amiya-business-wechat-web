@@ -117,6 +117,7 @@ export default {
         // 客户信息
         birthday:customerMessage.birthday ? customerMessage.birthday : null,
         city:customerMessage.city,
+        province:customerMessage.province,
         customerName:customerMessage.customerName,
         occupation:customerMessage.occupation,
         phone:customerMessage.phone,
@@ -135,6 +136,8 @@ export default {
         getCustomerType:Number(orderMessage.getCustomerType),
         customerSource:Number(orderMessage.customerSource),
         customerType:Number(orderMessage.customerType),
+        belongCompanyEnumId:Number(orderMessage.belongCompanyEnumId),
+
         // 其他内容
         consultingContent:otherContents.consultingContent,
         consultingContent2:otherContents.consultingContent2,

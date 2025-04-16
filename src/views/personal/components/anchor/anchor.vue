@@ -52,7 +52,7 @@ export default {
             // 时间参数
             time:this.$moment().format("YYYY-MM-DD"),
             minDate: new Date(2020, 0, 1),
-            maxDate: new Date(2025, 10, 1),
+            maxDate: new Date(2026, 10, 1),
             currentDate:  this.$moment().format("YYYY-MM"),
             // 时间弹窗
             timeModel:false,

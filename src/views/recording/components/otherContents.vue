@@ -128,6 +128,7 @@ export default {
         // 客户信息
         birthday:customerFormId.birthday ? customerFormId.birthday : null,
         city:customerFormId.city,
+        province:customerFormId.province,
         customerName:customerFormId.customerName,
         occupation:customerFormId.occupation,
         phone:customerFormId.phone,
@@ -147,6 +148,7 @@ export default {
         getCustomerType:Number(orderFormId.getCustomerType),
         customerSource:Number(orderFormId.customerSource),
         customerType:Number(orderFormId.customerType),
+        belongCompanyEnumId:Number(orderFormId.belongCompanyEnumId),
         // 其他内容
         consultingContent:otherForm.consultingContent,
         consultingContent2:otherForm.consultingContent2,

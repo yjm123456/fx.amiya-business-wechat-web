@@ -142,6 +142,14 @@
       placeholder="请选择指派"
       class="customer_content"
     />
+    <van-field
+      v-model="form.belongCompanyName"
+      label="归属公司"
+      disabled
+      @click="belongCompanyParams.belongCompanyModel = true"
+      placeholder="请选择归属公司"
+      class="customer_content"
+    />
     <div class="switch_content">
       <van-cell center title="是否为日不落数据" class="switch_con">
         <van-switch
@@ -486,6 +494,20 @@
       >
       </van-picker>
     </van-popup>
+    <!-- 归属公司 -->
+    <van-popup
+      v-model="belongCompanyParams.belongCompanyModel"
+      round
+      position="bottom"
+    >
+      <van-picker
+        show-toolbar
+        :columns="belongCompanyParams.belongCompanyListName"
+        @cancel="belongCompanyParams.belongCompanyModel = false"
+        @confirm="belongCompanyConfirm"
+      >
+      </van-picker>
+    </van-popup>
     <!-- 客户类型 -->
     <van-popup
       v-model="
@@ -620,7 +642,7 @@ export default {
     return {
       currentDate: this.$moment().format("YYYY-MM-DD"),
       minDate: new Date(2020, 1, 1),
-      maxDate: new Date(2026, 1, 1),
+      maxDate: new Date(2028, 1, 1),
       // 面诊时间
       currentDate2: this.$moment().format("YYYY-MM-DD"),
       calendarModel: false,
@@ -732,7 +754,11 @@ export default {
         // 词条
         fromTitle:'',
         // 是否重复下单
-        isRepeateCreateOrder:false
+        isRepeateCreateOrder:false,
+        // 归属公司
+        belongCompany:null,
+        belongCompanyName:null,
+
       },
       // 线索截图
       imgList: [],
@@ -790,6 +816,12 @@ export default {
         getCustomerTypeModel: false,
         getCustomerTypeList: [],
         getCustomerTypeListName: [],
+      },
+      // 归属公司
+      belongCompanyParams:{
+        belongCompanyModel: false,
+        belongCompanyList: [],
+        belongCompanyListName: [],
       },
       // 客户类型
       shoppingCartRegistrationCustomerTypeParams: {
@@ -1191,6 +1223,15 @@ export default {
         (item) => value == item.name
       ).id;
     },
+    // 归属公司
+    belongCompanyConfirm(value) {
+      this.form.belongCompanyName = value;
+      this.belongCompanyParams.belongCompanyModel = false;
+      this.form.belongCompany =
+        this.belongCompanyParams.belongCompanyList.find(
+          (item) => value == item.name
+        ).id;
+    },
     // 获客方式确认
     getCustomerTypeConfirm(value) {
       this.form.getCustomerTypeName = value;
@@ -1253,6 +1294,18 @@ export default {
           const { typeList } = res.data;
           this.getCustomerTypeParams.getCustomerTypeList = typeList;
           this.getCustomerTypeParams.getCustomerTypeListName = typeList.map(
+            (item) => item.name
+          );
+        }
+      });
+    },
+    // 获客归属公司
+    getBelongCompanyListClick() {
+      smallYellowCarRegistrationApi.getBelongCompanyList().then((res) => {
+        if (res.code === 0) {
+          const { belongCompanyList } = res.data;
+          this.belongCompanyParams.belongCompanyList = belongCompanyList;
+          this.belongCompanyParams.belongCompanyListName = belongCompanyList.map(
             (item) => item.name
           );
         }
@@ -1359,7 +1412,8 @@ export default {
         reContent,
         customerWechatNo,
         fromTitle,
-        isRepeateCreateOrder
+        isRepeateCreateOrder,
+        belongCompany
       } = this.form;
       if (!recordDate) {
         this.$toast("请选择登记时间！");
@@ -1411,6 +1465,10 @@ export default {
       }
       if (emergencyLevel == null) {
         this.$toast("请选择重要程度！");
+        return;
+      }
+      if (belongCompany == null) {
+        this.$toast("请选择归属公司！");
         return;
       }
       if (isReturnBackPrice == true && !refundTypeName) {
@@ -1477,7 +1535,8 @@ export default {
         reContent,
         customerWechatNo,
         fromTitle,
-        isRepeateCreateOrder
+        isRepeateCreateOrder,
+        belongCompany
       };
       // if (phone) {
       //   if (!/^1[3456789]\d{9}$/.test(phone)) {
@@ -1679,6 +1738,7 @@ export default {
     this.getemergencyLevels();
     // this.getcustomerServiceNameList()
     this.getEmployeeList();
+    this.getBelongCompanyListClick()
   },
   watch: {
     //实时监听搜索输入内容

@@ -84,6 +84,14 @@
                 type="number"
                 :disabled="isPrice == 'true'"
             />
+            <van-field
+                v-model="form.belongCompanyEnumId"
+                label="归属公司"
+                disabled
+                @click="model.belongCompanyEnumIdModel = true"
+                placeholder="请选择归属公司"
+                class="customer_content"
+            />
         </div>
         <div>
             <van-popup v-model="model.getCustomerTypeModel" round position="bottom">
@@ -111,6 +119,20 @@
                     @cancel="model.customerSourceModel = false"
                     @confirm="customerSourceConfirm"
                 />
+            </van-popup>
+            <!-- 归属公司 -->
+            <van-popup
+                v-model="model.belongCompanyEnumIdModel"
+                round
+                position="bottom"
+                >
+                <van-picker
+                    show-toolbar
+                    :columns="list.belongCompanyEnumIdListName"
+                    @cancel="model.belongCompanyEnumIdModel = false"
+                    @confirm="belongCompanyEnumIdConfirm"
+                >
+                </van-picker>
             </van-popup>
             <van-popup v-model="model.orderTypeModel" round position="bottom">
                 <van-picker
@@ -171,6 +193,7 @@
 </template>
 <script>
 import * as api from "@/api/order.js";
+import * as smallYellowCarRegistrationApi from "@/api/smallYellowCarRegistration.js";
 
 export default {
     props:{
@@ -204,7 +227,11 @@ export default {
                 // 客户类型
                 customerType:null,
                 // 客户来源
-                customerSource:null
+                customerSource:null,
+                // 归属公司
+                belongCompanyEnumId:null,
+                
+                
             },
             // 用于传给接口id
             form2:{
@@ -227,7 +254,9 @@ export default {
                 // 客户类型
                 customerType:null,
                 // 客户来源
-                customerSource:null
+                customerSource:null,
+                // 归属公司
+                belongCompanyEnumId:null,
             },
             // 获取接口数据
             joggle:{
@@ -255,7 +284,9 @@ export default {
                 // 客户类型
                 getcustomerTypeList:[],
                 // 客户来源
-                getcustomerSourceList:[]
+                getcustomerSourceList:[],
+                // 归属公司
+                belongCompanyEnumIdList:[]
             },
             // model
             model:{
@@ -267,7 +298,8 @@ export default {
                 belongMonthModel:false,
                 getCustomerTypeModel:false,
                 customerTypeModel:false,
-                customerSourceModel:false
+                customerSourceModel:false,
+                belongCompanyEnumIdModel:false
             },
             // 用于页面展示数据
             list:{
@@ -278,7 +310,8 @@ export default {
                 appointmentHospitalIdName:[],
                 getCustomerTypeName:[],
                 getcustomerTypeListNames:[],
-                getcustomerSourceListNames:[]
+                getcustomerSourceListNames:[],
+                belongCompanyEnumIdListName:[]
             },
             // 判断下单金额是否可修改
             isPrice:false
@@ -286,6 +319,24 @@ export default {
 
     },
     methods:{
+        // 归属公司
+        belongCompanyEnumIdConfirm(value) {
+            this.form.belongCompanyEnumId = value;
+            this.model.belongCompanyEnumIdModel = false;
+            this.form2.belongCompanyEnumId = this.joggle.belongCompanyEnumIdList.find((item) => value == item.name).id;
+        },
+        // 获客归属公司
+        getbelongCompanyEnumIdListClick() {
+            smallYellowCarRegistrationApi.getBelongCompanyList().then((res) => {
+                if (res.code === 0) {
+                const { belongCompanyList } = res.data;
+                this.joggle.belongCompanyEnumIdList = belongCompanyList;
+                this.list.belongCompanyEnumIdListName = belongCompanyList.map(
+                    (item) => item.name
+                );
+                }
+            });
+        },
         prevStep(){
             this.$emit('edidActive2',{
                 active:0,
@@ -310,7 +361,7 @@ export default {
             sessionStorage.setItem('orderFormId',JSON.stringify(this.form2))
         },
         nextStep(){
-            const {orderType,depositAmount,appointmentHospitalId,orderSource,consultationType,belongMonth,addOrderPrice,getCustomerType,customerType,customerSource} = this.form
+            const {orderType,depositAmount,appointmentHospitalId,orderSource,consultationType,belongMonth,addOrderPrice,getCustomerType,customerType,customerSource,belongCompanyEnumId} = this.form
             if(!orderType){
                 this.$toast("请选择订单类型");
                 return
@@ -355,6 +406,10 @@ export default {
             }
              if(!addOrderPrice){
                 this.$toast("请输入下单金额");
+                return
+            }
+            if(this.form2.belongCompanyEnumId == null){
+                this.$toast("请选择归属公司");
                 return
             }
 
@@ -557,6 +612,7 @@ export default {
         this.getshoppingCartGetCustomerTypeList()
         this.getcustomerTypeList()
         this.getcustomerSourceList()
+        this.getbelongCompanyEnumIdListClick()
         let orderFormName = JSON.parse(sessionStorage.getItem('orderFormName'))
         let orderFormId = JSON.parse(sessionStorage.getItem('orderFormId'))
         if(orderFormName || orderFormId){
@@ -570,6 +626,7 @@ export default {
                 this.form.getCustomerType = orderFormName.getCustomerType
                 this.form.customerType = orderFormName.customerType
                 this.form.customerSource = orderFormName.customerSource
+                this.form.belongCompanyEnumId = orderFormName.belongCompanyEnumId
 
                 this.form2.orderType = orderFormId.orderType
                 this.form2.depositAmount = orderFormId.depositAmount ? orderFormId.depositAmount : 0
@@ -581,6 +638,7 @@ export default {
                 this.form2.getCustomerType = orderFormId.getCustomerType
                 this.form2.customerType = orderFormId.customerType
                 this.form2.customerSource = orderFormId.customerSource
+                this.form2.belongCompanyEnumId = orderFormId.belongCompanyEnumId
         }
     },
     watch: {  //实时监听搜索输入内容
