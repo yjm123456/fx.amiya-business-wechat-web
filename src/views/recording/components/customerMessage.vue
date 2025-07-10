@@ -243,7 +243,7 @@ export default {
     //     //     // this.fileList.push(res.data.url)
     //     //   }
     //     // })
-    //     this.$axios.post('https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone',data).then(res=>{
+    //     this.$axios.post('https://www.ameiyes.com/fxopenoss/aliyunoss/uploadone',data).then(res=>{
     //       if(res.code === 0){
     //         console.log(res.data.url)
     //         this.fileList.push(res.data.url)

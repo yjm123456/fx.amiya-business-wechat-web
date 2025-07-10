@@ -2,24 +2,24 @@
     <div :style="{height:innerHeight > 800 ? '100vh' : 'auto'}">
         <div class="top">
             <div class="top_con">
-                <div class="top_title">{{title}}</div>
-                <div class="total_num">{{performance.cueerntMonthTotalPerformance ? performance.cueerntMonthTotalPerformance + 'w' : ' -'}}</div>
-                <div class="line"></div>
+                <div class="top_title"><div>{{title}}</div> <div class="total_num">{{performance.cueerntMonthTotalPerformance ? performance.cueerntMonthTotalPerformance + 'w' : ' 0w'}}</div></div>
+                <!-- <div class="total_num">{{performance.cueerntMonthTotalPerformance ? performance.cueerntMonthTotalPerformance + 'w' : ' -'}}</div> -->
+                <!-- <div class="line2"></div> -->
                 <div class="bot_num">
                     <span>目标 <div class="num"> {{performance.totalPerformanceTarget ? performance.totalPerformanceTarget + 'w' : ' -'}}</div></span>
                     <span class="bot_r">完成率 <div class="num">{{ performance.totalPerformanceTargetComplete ? performance.totalPerformanceTargetComplete + '%' : '-'}} </div></span>
                 </div>
-                <div class="bot_num" >
+                <div class="bot_num" style="margin-top:3px">
                     <span>
                         同比
-                        <div v-if="Math.sign(performance.totalPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}</div>
-                        <div v-else-if="Math.sign(performance.totalPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}</div>
+                        <div v-if="Math.sign(performance.totalPerformanceYearOnYear)== 1"> {{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></div>
+                        <div v-else-if="Math.sign(performance.totalPerformanceYearOnYear)== -1">{{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></div>
                         <div v-else>-</div>
                     </span>
                     <span class="bot_r">
                         环比
-                        <div v-if="Math.sign(performance.totalPerformanceChainratio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceChainratio) + '%'}}</div>
-                        <div v-else-if="Math.sign(performance.totalPerformanceChainratio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceChainratio) + '%'}}</div>
+                        <div v-if="Math.sign(performance.totalPerformanceChainratio)== 1"> {{ Math.abs(performance.totalPerformanceChainratio) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></div>
+                        <div v-else-if="Math.sign(performance.totalPerformanceChainratio)== -1">{{ Math.abs(performance.totalPerformanceChainratio) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></div>
                         <div v-else>-</div>
                     </span>
                 </div>
@@ -29,345 +29,171 @@
         <div class="center">
             <div class="cen_left">
                 <div class="new_customer_con">
-                    <span class="new_customer">新客业绩</span>
-                    <span class="target">目标<span>{{performance.newCustomerPerformanceTarget ? performance.newCustomerPerformanceTarget + 'w': ' -'}}</span></span>
+                    <div class="new_customer"><div>新客业绩</div>  <div  class="total_num" >{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': ' 0w'}}</div></div>
+                    <!-- <span class="target">目标<span>{{performance.newCustomerPerformanceTarget ? performance.newCustomerPerformanceTarget + 'w': ' -'}}</span></span> -->
                 </div>
-                <div class="total_num">{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': ' -'}}</div>
-                <div class="line"></div>
                 <div class="cen_bot_w">
+                    <!-- <div class="total_num">{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': ' -'}}</div> -->
+                    
+                </div>
+                <!-- <div class="line"></div> -->
+                <div class="cen_bot_w">
+                    <div  class="t_con">
+                        <div class="t_h">目标</div>
+                        <span>{{performance.newCustomerPerformanceTarget ? performance.newCustomerPerformanceTarget + 'w': ' -'}}</span>
+                    </div>
                     <div class="t_con">
                         <div  class="t_h">完成比率</div>
                         <span>{{performance.newCustomerPerformanceTargetComplete ? performance.newCustomerPerformanceTargetComplete  + '%': '-'}}</span>
                     </div>
-                    <div  class="t_con">
-                        <div class="t_h">业绩占比</div>
-                        <span>{{performance.newCustomerPerformanceRatio ? performance.newCustomerPerformanceRatio + '%' : '-'}}</span>
-                    </div>
+                    
                 </div>
                 <div class="cen_bot_w" >
-                    <div class="t_con">
+                    <div class="t_con2">
                         <div  class="t_h">同比</div>
                         <span>
-                            <span v-if="Math.sign(performance.newCustomerPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.newCustomerPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.newCustomerPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.newCustomerPerformanceYearOnYear) + '%'}}</span>
+                            <span v-if="Math.sign(performance.newCustomerPerformanceYearOnYear)== 1"> {{ Math.abs(performance.newCustomerPerformanceYearOnYear) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.newCustomerPerformanceYearOnYear)== -1">{{ Math.abs(performance.newCustomerPerformanceYearOnYear) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </span>
                     </div>
                     <div  class="t_con">
                         <div class="t_h">环比</div>
                         <div>
-                            <span v-if="Math.sign(performance.newCustomerPerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.newCustomerPerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.newCustomerPerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.newCustomerPerformanceChainRatio) + '%'}}</span>
+                            <span v-if="Math.sign(performance.newCustomerPerformanceChainRatio)== 1"> {{ Math.abs(performance.newCustomerPerformanceChainRatio) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.newCustomerPerformanceChainRatio)== -1">{{ Math.abs(performance.newCustomerPerformanceChainRatio) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </div>
                     </div>
+                </div>
+                <div  class="cen_bot_w" style="justify-content:flex-start;">
+                    <div class="t_h">业绩占比 {{performance.newCustomerPerformanceRatio ? performance.newCustomerPerformanceRatio + '%' : '-'}}</div>
                 </div>
             </div>
 
             <div class="cen_left">
                 <div class="new_customer_con">
-                    <span class="new_customer">老客业绩</span>
-                    <span class="target">目标<span>{{performance.oldCustomerTarget ? performance.oldCustomerTarget + 'w' : ' -'}}</span></span>
+                    <div class="new_customer">老客业绩 <div class="total_num">{{performance.currentMonthOldCustomerPerformance ? performance.currentMonthOldCustomerPerformance + 'w': ' 0w'}}</div></div>
+                    <!-- <span class="target">目标<span>{{performance.oldCustomerTarget ? performance.oldCustomerTarget + 'w' : ' -'}}</span></span> -->
                 </div>
-                <div class="total_num">{{performance.currentMonthOldCustomerPerformance ? performance.currentMonthOldCustomerPerformance + 'w': ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
+                <div class="cen_bot_w" style="margin-top:4px">
+                    <div  class="t_con">
+                        <div class="t_h">目标</div>
+                        <span>{{performance.oldCustomerTarget ? performance.oldCustomerTarget + 'w' : ' -'}}</span>
+                    </div>
                     <div class="t_con">
                         <div  class="t_h">完成比率</div>
                         <span>{{performance.oldCustomerTargetComplete ? performance.oldCustomerTargetComplete  + '%': '-'}}</span>
                     </div>
-                    <div  class="t_con">
-                        <div class="t_h">业绩占比</div>
-                        <span>{{performance.oldCustomerPerformanceRatio ? performance.oldCustomerPerformanceRatio + '%' : '-'}}</span>
-                    </div>
+                    
                 </div>
                 <div class="cen_bot_w" >
-                    <div class="t_con">
+                    <div class="t_con2">
                         <div  class="t_h">同比</div>
                         <span>
-                            <span v-if="Math.sign(performance.oldCustomerPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.oldCustomerPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.oldCustomerPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.oldCustomerPerformanceYearOnYear) + '%'}}</span>
+                            <span v-if="Math.sign(performance.oldCustomerPerformanceYearOnYear)== 1"> {{ Math.abs(performance.oldCustomerPerformanceYearOnYear) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.oldCustomerPerformanceYearOnYear)== -1">{{ Math.abs(performance.oldCustomerPerformanceYearOnYear) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </span>
                     </div>
                     <div  class="t_con">
                         <div class="t_h">环比</div>
                         <div>
-                            <span v-if="Math.sign(performance.oldCustomerPerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.oldCustomerPerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.oldCustomerPerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.oldCustomerPerformanceChainRatio) + '%'}}</span>
+                            <span v-if="Math.sign(performance.oldCustomerPerformanceChainRatio)== 1"> {{ Math.abs(performance.oldCustomerPerformanceChainRatio) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.oldCustomerPerformanceChainRatio)== -1">{{ Math.abs(performance.oldCustomerPerformanceChainRatio) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </div>
+                    </div>
+                </div>
+                <div class="cen_bot_w">
+                    <div  class="t_con">
+                        <div class="t_h">业绩占比 {{performance.oldCustomerPerformanceRatio ? performance.oldCustomerPerformanceRatio + '%' : '-'}}</div>
                     </div>
                 </div>
             </div>
             
         </div>
 
-        <div class="center">
-            <div class="cen_left">
+        <div class="center" >
+            <div class="cen_left" style="padding:15px 10px;">
                 <div class="new_customer_con">
-                    <span class="new_customer">有效业绩</span>
+                    <div class="new_customer">有效业绩 <div class="total_num" >{{performance.existPricePerformance ? performance.existPricePerformance + 'w': ' 0w'}}</div></div>
                 </div>
-                <div class="total_num">{{performance.existPricePerformance ? performance.existPricePerformance + 'w': ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
+                <div style="display:flex;justify-content: space-between;margin-top:1px;align-items:center">
+                    <div>
+                        <!-- <div class="total_num">{{performance.existPricePerformance ? performance.existPricePerformance + 'w': ' -'}}</div> -->
+                        <!-- <div class="line2"></div> -->
+                    </div>
+                    
+                </div>
+                
+                <!-- <div class="cen_bot_w">
                     <div  class="t_con1">
                         <div class="t_h">业绩占比 </div>
                         <span style="margin-left:4px;margin-top:1px">{{ performance.existPricePerformanceRatio ?  performance.existPricePerformanceRatio + '%' : ' -'}}</span>
                     </div>
-                </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
+                </div> -->
+                <div class="cen_bot_w" style="margin-top:3px">
+                    <div class="t_con2">
                         <div  class="t_h">同比</div>
                         <span>
-                            <span v-if="Math.sign(performance.existPricePerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.existPricePerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.existPricePerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.existPricePerformanceYearOnYear) + '%'}}</span>
+                            <span v-if="Math.sign(performance.existPricePerformanceYearOnYear)== 1"> {{ Math.abs(performance.existPricePerformanceYearOnYear) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.existPricePerformanceYearOnYear)== -1">{{ Math.abs(performance.existPricePerformanceYearOnYear) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </span>
                     </div>
                     <div  class="t_con">
                         <div class="t_h">环比</div>
                         <div>
-                            <span v-if="Math.sign(performance.existPricePerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.existPricePerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.existPricePerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.existPricePerformanceChainRatio) + '%'}}</span>
+                            <span v-if="Math.sign(performance.existPricePerformanceChainRatio)== 1"> {{ Math.abs(performance.existPricePerformanceChainRatio) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.existPricePerformanceChainRatio)== -1">{{ Math.abs(performance.existPricePerformanceChainRatio) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </div>
                     </div>
                 </div>
+                <div class="cen_bot_w"  style="padding-top:4px">
+                        <div  class="t_con">
+                            <div class="t_h">业绩占比 {{ performance.existPricePerformanceRatio ?  performance.existPricePerformanceRatio + '%' : ' -'}}</div>
+                        </div>
+                    </div>
             </div>
 
-            <div class="cen_left">
-                <div class="new_customer_con">
-                    <span class="new_customer">潜在业绩</span>
+            <div class="cen_left" style="padding:15px 10px;">
+                <div class="new_customer_con" >
+                    <div class="new_customer">潜在业绩 <div  class="total_num" >{{performance.zeroPricePerformance ? performance.zeroPricePerformance + 'w': ' 0w'}}</div></div>
                 </div>
-                <div class="total_num">{{performance.zeroPricePerformance ? performance.zeroPricePerformance + 'w': ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
-                    <div  class="t_con1">
-                        <div class="t_h">业绩占比 </div>
-                        <span style="margin-left:4px;margin-top:1px">{{ performance.zeroPricePerformanceRatio ?  performance.zeroPricePerformanceRatio + '%' : ' -'}}</span>
+                <div style="display:flex;justify-content: space-between;margin-top:1px;align-items:center">
+                    <div>
+                        <!-- <div class="total_num">{{performance.zeroPricePerformance ? performance.zeroPricePerformance + 'w': ' -'}}</div> -->
+                        <!-- <div class="line2"></div> -->
                     </div>
+                    
                 </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
+                <div class="cen_bot_w"  style="margin-top:2px">
+                    <div class="t_con2">
                         <div  class="t_h">同比</div>
                         <span>
-                            <span v-if="Math.sign(performance.zeroPricePerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.zeroPricePerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.zeroPricePerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.zeroPricePerformanceYearOnYear) + '%'}}</span>
+                            <span v-if="Math.sign(performance.zeroPricePerformanceYearOnYear)== 1"> {{ Math.abs(performance.zeroPricePerformanceYearOnYear) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.zeroPricePerformanceYearOnYear)== -1">{{ Math.abs(performance.zeroPricePerformanceYearOnYear) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </span>
                     </div>
                     <div  class="t_con">
                         <div class="t_h">环比</div>
                         <div>
-                            <span v-if="Math.sign(performance.zeroPricePerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.zeroPricePerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.zeroPricePerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.zeroPricePerformanceChainRatio) + '%'}}</span>
+                            <span v-if="Math.sign(performance.zeroPricePerformanceChainRatio)== 1"> {{ Math.abs(performance.zeroPricePerformanceChainRatio) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                            <span v-else-if="Math.sign(performance.zeroPricePerformanceChainRatio)== -1">{{ Math.abs(performance.zeroPricePerformanceChainRatio) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                             <span v-else>-</span>
                         </div>
                     </div>
                 </div>
+                <div class="cen_bot_w" >
+                        <div  class="t_con">
+                            <div class="t_h">业绩占比 {{ performance.zeroPricePerformanceRatio ?  performance.zeroPricePerformanceRatio + '%' : ' -'}}</div>
+                        </div>
+                    </div>
             </div>
         </div>
-
-        <!-- <div class="center">
-            <div class="cen_left">
-                <div class="new_customer_con2">
-                    <div class="new_customer">当月派单</div>
-                    <div class="new_customer">{{title == '总业绩' ? '当月成交业绩' : '当日成交业绩'}}</div>
-                </div>
-                <div class="total_num">{{performance.duringMonthSendDuringMonthDeal ? performance.duringMonthSendDuringMonthDeal + 'w' : ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
-                    <div  class="t_con1">
-                        <div class="t_h">业绩占比 </div>
-                        <span style="margin-left:4px;margin-top:1px">{{ performance.duringMonthSendDuringMonthDealPerformanceRatio ?  performance.duringMonthSendDuringMonthDealPerformanceRatio + '%' : ' -'}}</span>
-                    </div>
-                </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
-                        <div  class="t_h">同比</div>
-                        <span>
-                            <span v-if="Math.sign(performance.duringMonthSendDuringMonthDealYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.duringMonthSendDuringMonthDealYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.duringMonthSendDuringMonthDealYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.duringMonthSendDuringMonthDealYearOnYear) + '%'}}</span>
-                            <span v-else>-</span>
-                        </span>
-                    </div>
-                    <div  class="t_con">
-                        <div class="t_h">环比</div>
-                        <div>
-                            <span v-if="Math.sign(performance.duringMonthSendDuringMonthDealChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.duringMonthSendDuringMonthDealChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.duringMonthSendDuringMonthDealChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.duringMonthSendDuringMonthDealChainRatio) + '%'}}</span>
-                            <span v-else>-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cen_left">
-                <div class="new_customer_con2">
-                    <div class="new_customer">历史派单</div>
-                    <div class="new_customer"> {{title == '总业绩' ? '当月成交业绩' : '当日成交业绩'}}</div>
-                </div>
-                <div class="total_num">{{performance.historySendDuringMonthDeal ? performance.historySendDuringMonthDeal + 'w' : ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
-                    <div  class="t_con1">
-                        <div class="t_h">业绩占比 </div>
-                        <span style="margin-left:4px;margin-top:1px">{{ performance.historySendDuringMonthDealPerformanceRatio ?  performance.historySendDuringMonthDealPerformanceRatio + '%' : ' -'}}</span>
-                    </div>
-                </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
-                        <div  class="t_h">同比</div>
-                        <span>
-                            <span v-if="Math.sign(performance.historySendDuringMonthDealYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.historySendDuringMonthDealYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.historySendDuringMonthDealYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.historySendDuringMonthDealYearOnYear) + '%'}}</span>
-                            <span v-else>-</span>
-                        </span>
-                    </div>
-                    <div  class="t_con">
-                        <div class="t_h">环比</div>
-                        <div>
-                            <span v-if="Math.sign(performance.historySendDuringMonthDealChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.historySendDuringMonthDealChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.historySendDuringMonthDealChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.historySendDuringMonthDealChainRatio) + '%'}}</span>
-                            <span v-else>-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="center">
-            <div class="cen_left">
-                <div class="new_customer_con">
-                    <span class="new_customer">视频业绩</span>
-                </div>
-                <div class="total_num">{{performance.videoConsultationPerformance ? performance.videoConsultationPerformance + 'w': ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
-                    <div  class="t_con1">
-                        <div class="t_h">业绩占比 </div>
-                        <span style="margin-left:4px;margin-top:1px">{{ performance.videoConsultationPerformanceRatio ?  performance.videoConsultationPerformanceRatio + '%' : ' -'}}</span>
-                    </div>
-                </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
-                        <div  class="t_h">同比</div>
-                        <span>
-                            <span v-if="Math.sign(performance.videoConsultationPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.videoConsultationPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.videoConsultationPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.videoConsultationPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else>-</span>
-                        </span>
-                    </div>
-                    <div  class="t_con">
-                        <div class="t_h">环比</div>
-                        <div>
-                            <span v-if="Math.sign(performance.videoConsultationPerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.videoConsultationPerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.videoConsultationPerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.videoConsultationPerformanceChainRatio) + '%'}}</span>
-                            <span v-else>-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cen_left">
-                <div class="new_customer_con">
-                    <span class="new_customer">照片业绩</span>
-                </div>
-                <div class="total_num">{{performance.pictureConsultationPerformance ? performance.pictureConsultationPerformance + 'w' : ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
-                    <div  class="t_con1">
-                        <div class="t_h">业绩占比 </div>
-                        <span style="margin-left:4px;margin-top:1px">{{ performance.pictureConsultationPerformanceRatio ?  performance.pictureConsultationPerformanceRatio + '%' : ' -'}}</span>
-                    </div>
-                </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
-                        <div  class="t_h">同比</div>
-                        <span>
-                            <span v-if="Math.sign(performance.pictureConsultationPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.pictureConsultationPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.pictureConsultationPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.pictureConsultationPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else>-</span>
-                        </span>
-                    </div>
-                    <div  class="t_con">
-                        <div class="t_h">环比</div>
-                        <div>
-                            <span v-if="Math.sign(performance.pictureConsultationPerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.pictureConsultationPerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.pictureConsultationPerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.pictureConsultationPerformanceChainRatio) + '%'}}</span>
-                            <span v-else>-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="center">
-            <div class="cen_left">
-                <div class="new_customer_con">
-                    <span class="new_customer">主播接诊业绩</span>
-                </div>
-                <div class="total_num">{{performance.acompanyingPerformance ? performance.acompanyingPerformance + 'w': ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w" >
-                    <div  class="t_con1">
-                        <div class="t_h">业绩占比 </div>
-                        <span style="margin-left:4px;margin-top:1px">{{ performance.acompanyingPerformanceRatio ?  performance.acompanyingPerformanceRatio + '%' : ' -'}}</span>
-                    </div>
-                </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
-                        <div  class="t_h">同比</div>
-                        <span>
-                            <span v-if="Math.sign(performance.acompanyingPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.acompanyingPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.acompanyingPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.acompanyingPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else>-</span>
-                        </span>
-                    </div>
-                    <div  class="t_con">
-                        <div class="t_h">环比</div>
-                        <div>
-                            <span v-if="Math.sign(performance.acompanyingPerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.acompanyingPerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.acompanyingPerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.acompanyingPerformanceChainRatio) + '%'}}</span>
-                            <span v-else>-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cen_left">
-                <div class="new_customer_con">
-                    <span class="new_customer">非主播接诊业绩</span>
-                </div>
-                <div class="total_num">{{performance.notAcompanyingPerformance ? performance.notAcompanyingPerformance + 'w': ' -'}}</div>
-                <div class="line"></div>
-                <div class="cen_bot_w">
-                    <div  class="t_con1">
-                        <div class="t_h">业绩占比 </div>
-                        <span style="margin-left:4px;margin-top:1px">{{ performance.notAcompanyingPerformanceRatio ?  performance.notAcompanyingPerformanceRatio + '%' : ' -'}}</span>
-                    </div>
-                </div>
-                <div class="cen_bot_w" >
-                    <div class="t_con">
-                        <div  class="t_h">同比</div>
-                        <span>
-                            <span v-if="Math.sign(performance.notAcompanyingPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.notAcompanyingPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.notAcompanyingPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.notAcompanyingPerformanceYearOnYear) + '%'}}</span>
-                            <span v-else>-</span>
-                        </span>
-                    </div>
-                    <div  class="t_con">
-                        <div class="t_h">环比</div>
-                        <div>
-                            <span v-if="Math.sign(performance.notAcompanyingPerformanceChainRatio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.notAcompanyingPerformanceChainRatio) + '%'}}</span>
-                            <span v-else-if="Math.sign(performance.notAcompanyingPerformanceChainRatio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.notAcompanyingPerformanceChainRatio) + '%'}}</span>
-                            <span v-else>-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </template>
 <script>
@@ -407,6 +233,14 @@ export default {
         // margin-top: 10px;
         font-size: 12px;
         margin-top: 15px;
+        .top_title{
+            text-align: start;
+            font-size: 12px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .top_con{
             width: 100%;
             background-image: url(../../../assets/dataCenter.png) ;
@@ -416,12 +250,22 @@ export default {
             box-sizing: border-box;
             .total_num{
                 color: #5492FE;
-                font-size: 16px;
-                margin-top: 5px;
+                font-size: 14px;
+                // margin-top: 5px;
+                border-bottom:2px solid #5492FE;
+                padding-bottom: 2px;
+                
                 
             }
             .line{
-                width: 70px;
+                width: 46px;
+                height: 1px;
+                border: 1px solid #5492FE;
+                margin: 5px 0;
+                margin-top: -10px;
+            }
+            .line2{
+                width: 46px;
                 height: 1px;
                 border: 1px solid #5492FE;
                 margin: 5px 0;
@@ -430,7 +274,7 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 .num{
-                    font-size: 13px;
+                    font-size: 12px;
                     color: #5492FE;
                     .icon_ziy{
                         font-size: 10px;
@@ -472,8 +316,14 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+
                 .new_customer{
-                    font-size: 13px;
+                    width: 100%;
+                    font-size: 12px;
+                    text-align: start;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                 }
                 .target{
                     font-size: 12px;
@@ -483,7 +333,7 @@ export default {
             .new_customer_con2{
                 align-items: center;
                 .new_customer{
-                    font-size: 13px;
+                    font-size: 12px;
                 }
                 .target{
                     font-size: 12px;
@@ -491,12 +341,22 @@ export default {
                 }
             }
             .total_num{
-                font-size: 15px;
+                font-size: 14px;
                 color: #5492FE;
-                margin-top: 4px;
+                // margin-top: 4px;
+                border-bottom:2px solid #5492FE;
+                padding-bottom: 2px;
+                
             }
             .line{
-                width: 70px;
+                width: 46px;
+                height: 1px;
+                border: 1px solid #5492FE;
+                margin: 5px 0;
+                margin-top: -10px;
+            }
+            .line2{
+                width: 46px;
                 height: 1px;
                 border: 1px solid #5492FE;
                 margin: 5px 0;
@@ -512,6 +372,25 @@ export default {
                 .t_con{
                     display: flex;
                     align-items: center;
+                    flex-direction: column;
+                    .t_h{
+                        // width: 30px;
+                        text-align: center;
+                    }
+                    .icon_ziy{
+                        font-size: 10px;
+                    }
+                    .red{
+                    color: green;
+                }
+                
+                .green{
+                    color: red;
+                }
+                }
+                .t_con2{
+                    display: flex;
+                    align-items: flex-start;
                     flex-direction: column;
                     .t_h{
                         // width: 30px;

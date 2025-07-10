@@ -2,7 +2,7 @@ import http from "../utils/requestIntercept"
 // 上传图片
 export const upload = (data) => {
     return http({
-        url: "https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone",
+        url: "https://www.ameiyes.com/fxopenoss/aliyunoss/uploadone",
         method: "post",
         data
     });
