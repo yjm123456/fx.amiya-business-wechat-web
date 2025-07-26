@@ -512,3 +512,10 @@ export const LiveAnchorvalidList = (params) => {
         params
     });
 };
+// 获取名索医生列表
+export const getDoctorList = () => {
+    return http({
+        url: `/businessWechat/LiveAnchorBaseInfo/getDoctorList`,
+        method: "get",
+    });
+};

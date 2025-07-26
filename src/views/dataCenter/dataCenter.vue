@@ -18,17 +18,21 @@
         </van-popup> 
         <div class="money_con"><span>￥</span><span>{{performance.totalPerformance ? performance.totalPerformance : 0}}</span></div>
         <div class="ring"  v-if="Math.sign(performance.totalPerformanceChainRatio)== 1"> 
-            <span class="ring_num">{{ '+' +performance.totalPerformanceChainRatio + '%'}}</span>
+            <span class="ring_num"><span style="font-size:16px">环比</span> {{ '+' +performance.totalPerformanceChainRatio + '%'}}</span>
             <i class="iconfont icon-cs-jt-xs-1-1 jiantou"></i>
         </div>
         <div class="ring"  v-if="Math.sign(performance.totalPerformanceChainRatio)== -1">
-            <span class="ring_num2">{{performance.totalPerformanceChainRatio+ '%'}}</span>
+            <span class="ring_num2"><span style="font-size:16px">环比</span> {{performance.totalPerformanceChainRatio+ '%'}}</span>
             <i class="iconfont icon-cs-jt-xx-1-1 jiantou2"></i>
         </div>
         <!-- 环形图 -->
         <div class="chart_content">
             <chart :proportion="proportion"/>
         </div>
+        <!-- 地图 -->
+        <!-- <div class="chart_content" style="height:310px">
+            <china />
+        </div> -->
         <!-- nav -->
         <navs :performance="performance"/>
     </div>
@@ -36,12 +40,14 @@
 <script>
 import  * as api from "@/api/order.js";
 import chart from "./components/chart.vue"
+import china from "./components/china.vue"
 import navs from "./components/nav.vue"
 
 export default{
     components:{
         chart,
-        navs
+        navs,
+        china
     },
     data(){
         return{

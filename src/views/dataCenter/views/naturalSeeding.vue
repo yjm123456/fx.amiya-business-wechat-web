@@ -55,7 +55,7 @@ export default{
                 },
                 {
                     id:3,
-                    name:'机构'
+                    name:'医院'
                 },
             ],
             // 获取主播

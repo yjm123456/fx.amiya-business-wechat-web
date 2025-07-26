@@ -20,6 +20,11 @@ Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios
 
+// echarts 地图
+import * as echarts from 'echarts'
+import china from './echarts/china.json' //导入china包
+echarts.registerMap('china', china)
+Vue.prototype.$echarts = echarts
 
 // import Vconsole from 'vconsole';
 // const vConsole = new Vconsole()

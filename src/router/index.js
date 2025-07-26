@@ -143,6 +143,16 @@ const routes = [{
             import ('@/views/dataCenter/views/commerce'),
     },
     {
+        path: '/doctor',
+        name: 'doctor',
+        meta: {
+            title: "医生板块",
+            keepAlive: false,
+        },
+        component: () =>
+            import ('@/views/dataCenter/views/doctor'),
+    },
+    {
         path: '/assistantDetails',
         name: 'assistantDetails',
         meta: {

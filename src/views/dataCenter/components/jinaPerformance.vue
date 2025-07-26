@@ -28,13 +28,13 @@
         <div class="center">
             <div class="cen_left" >
                 <div class="new_customer_con">
-                    <span class="new_customer">新客业绩</span>
+                    <span class="new_customer">新客总业绩</span>
                     <div class="total_num">{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': '0w'}}</div>
                     <!-- <span class="target">目标<span>{{performance.newCustomerPerformanceTarget ? performance.newCustomerPerformanceTarget + 'w': ' -'}}</span></span> -->
                 </div>
                 
                 <div class="cen_bot_w">
-                    <div  class="t_con">
+                    <div  class="t_con2">
                         <div class="t_h">目标</div>
                         <span>{{performance.newCustomerPerformanceTarget ? performance.newCustomerPerformanceTarget + 'w': ' -'}}</span>
                     </div>
@@ -71,13 +71,13 @@
 
             <div class="cen_left" >
                 <div class="new_customer_con">
-                    <span class="new_customer">老客业绩</span>
+                    <span class="new_customer">老客总业绩</span>
                     <div class="total_num">{{performance.currentMonthOldCustomerPerformance ? performance.currentMonthOldCustomerPerformance+'w' : ' 0w'}}</div>
 
                 </div>
                 <div class="cen_bot_w">
                     
-                    <div  class="t_con">
+                    <div  class="t_con2">
                         <div class="t_h">目标</div>
                         <span>{{performance.oldCustomerTarget ? performance.oldCustomerTarget +'w': ' -'}}</span>
                     </div>
@@ -114,9 +114,9 @@
         </div>
 
         <div class="center">
-            <div class="cen_left" style="padding:15px 10px;">
+            <div class="cen_left" style="padding:25px 10px;">
                 <div class="new_customer_con">
-                    <span class="new_customer">有效业绩</span>
+                    <span class="new_customer">有效总业绩</span>
                     <div class="total_num">{{performance.existPricePerformance ? performance.existPricePerformance +'w': '0w'}}</div>
                 </div>
                 
@@ -146,9 +146,9 @@
                 </div>
             </div>
 
-            <div class="cen_left" style="padding:15px 10px;">
+            <div class="cen_left" style="padding:25px 10px;">
                 <div class="new_customer_con">
-                    <span class="new_customer">潜在业绩</span>
+                    <span class="new_customer">潜在总业绩</span>
                     <div class="total_num">{{performance.zeroPricePerformance ? performance.zeroPricePerformance + 'w': '0w'}}</div>
                 </div>
                 
@@ -512,7 +512,7 @@ export default {
                 }
                 .t_con{
                     display: flex;
-                    align-items: center;
+                    align-items: flex-end;
                     flex-direction: column;
                     .t_h{
                         // width: 30px;

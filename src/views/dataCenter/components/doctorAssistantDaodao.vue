@@ -47,6 +47,7 @@
        </div>
        <!-- <div class="no_data" :style="{height:!performance ? '90%' : '5px',position:'absolute',bottom:!performance ? '40%' : '0px'}">没有更多了</div> -->
        <!-- <div class="no_data" v-if="!performance" :style="{height:!performance ? '94%' : '5px',position:'absolute',bottom:!performance ? '0' : '30px',left:'49%'}">没有更多了</div> -->
+       <div  v-if="performance.length == 0" style="padding-top:100px;text-align:center;font-size:12px;color:#fff">暂无数据</div>
        <div class="no_data"  v-if="performance.length >0">没有更多了</div>
     </div>
     <van-loading size="24px" vertical text-color="#fff" color="#fff" style="height:100vh;padding:100px 0 0 50px" v-else>加载中...</van-loading>

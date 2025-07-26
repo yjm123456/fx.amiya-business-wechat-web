@@ -14,16 +14,23 @@
             <!-- 助理 -->
             <assistant ref="assistant" />
         </div>
+        <div v-if="active == 2"  class="right">
+            <!-- 医院-->
+            <doctorHospital ref="doctorHospital" />
+        </div>
     </div>
 </template>
 <script>
 import  * as api from "@/api/order.js";
 import anchor from "../../components/anchor/anchor.vue"
 import assistant from "../../components/assistant/assistant.vue"
+import doctorHospital from "../../components/doctorHospital/doctorHospital.vue"
+
 export default{
     components:{
         anchor,
-        assistant
+        assistant,
+        doctorHospital
     },
     data(){
         return{
@@ -36,6 +43,10 @@ export default{
                 {
                     id:1,
                     name:'助理'
+                },
+                {
+                    id:2,
+                    name:'医院'
                 },
             ],
             // 获取主播
@@ -63,8 +74,8 @@ export default{
     border-radius: 10px;
     height: 100vh;
     background: linear-gradient(#8ab4fe,#fff);
-    padding-left: 60px;
-    box-sizing: border-box
+    // padding-left: 60px;
+    // box-sizing: border-box
 }
 /deep/.van-sidebar-item--select::before{
     background: #EACEBF;

@@ -51,30 +51,31 @@
                 </div>
                 <div class="button"  @click="readCooperateLiveAnchorDataDetail">查看详情</div>
             </van-tab>
-            <van-tab title="带货板块">
+            <!-- 带货板块 -->
+            <van-tab title="医生板块">
                 <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
-                        <div class="nav_num">{{performance.commercePerformanceCompleteRate ? performance.commercePerformanceCompleteRate + '%' : '0%'}}</div>
-                        <div>目标：{{performance.commercePerformanceTarget ? performance.commercePerformanceTarget  : 0 }}w</div>
-                        <van-progress :percentage="performance.commercePerformanceCompleteRate == null ? 0 : performance.commercePerformanceCompleteRate > 100 ? 100 : performance.commercePerformanceCompleteRate == 0 ? 0 : performance.commercePerformanceCompleteRate" style="width:120px;margin:10px auto 0" :show-pivot="false" color="#21D4AD" track-color="#ccc"/>
+                        <div class="nav_num">{{performance.doctorPerformanceCompleteRate ? performance.doctorPerformanceCompleteRate + '%' : '0%'}}</div>
+                        <div>目标：{{performance.doctorPerformanceTarget ? performance.doctorPerformanceTarget  : 0 }}w</div>
+                        <van-progress :percentage="performance.doctorPerformanceCompleteRate == null ? 0 : performance.doctorPerformanceCompleteRate > 100 ? 100 : performance.doctorPerformanceCompleteRate == 0 ? 0 : performance.doctorPerformanceCompleteRate" style="width:120px;margin:10px auto 0" :show-pivot="false" color="#21D4AD" track-color="#ccc"/>
                     </div>
                     <div class="nav_right">
                         <div class="right_top">
                             <div>同比</div>
-                            <div  class="nav_num" v-if="Math.sign(performance.commercePerformanceYearToYear)== 1">{{'+' + performance.commercePerformanceYearToYear + '%'}}</div>
-                            <div  class="nav_num" v-else-if="Math.sign(performance.commercePerformanceYearToYear)== -1">{{performance.commercePerformanceYearToYear + '%'}}</div>
+                            <div  class="nav_num" v-if="Math.sign(performance.doctorPerformanceYearToYear)== 1">{{'+' + performance.doctorPerformanceYearToYear + '%'}}</div>
+                            <div  class="nav_num" v-else-if="Math.sign(performance.doctorPerformanceYearToYear)== -1">{{performance.doctorPerformanceYearToYear + '%'}}</div>
                             <div  class="nav_num" v-else>0%</div>
                         </div>
                         <div class="right_bottom">
                             <div>环比</div>
-                            <div  class="nav_num" v-if="Math.sign(performance.commercePerformanceChainRatio)== 1">{{'+' + performance.commercePerformanceChainRatio+ '%'}}</div>
-                            <div  class="nav_num" v-else-if="Math.sign(performance.commercePerformanceChainRatio)== -1">{{performance.commercePerformanceChainRatio+ '%'}}</div>
+                            <div  class="nav_num" v-if="Math.sign(performance.doctorPerformanceChainRatio)== 1">{{'+' + performance.doctorPerformanceChainRatio+ '%'}}</div>
+                            <div  class="nav_num" v-else-if="Math.sign(performance.doctorPerformanceChainRatio)== -1">{{performance.doctorPerformanceChainRatio+ '%'}}</div>
                             <div  class="nav_num" v-else>0%</div>
                         </div>
                     </div>
                 </div>
-                <div class="button" @click="readTakeGoodsDataDetail">查看详情</div>
+                <div class="button" @click="doctorDataDetail">查看详情</div>
             </van-tab>
             <van-tab title="其他收入">
                 <div class="nav">
@@ -137,9 +138,9 @@ export default{
             }
         },
         // 带货板块
-        readTakeGoodsDataDetail(){
+        doctorDataDetail(){
             if(sessionStorage.getItem('readTakeGoodsData') == 'true'){
-                this.$router.push({path:'/commerce'})
+                this.$router.push({path:'/doctor',query:{active:2}})
             }else{
                 this.$toast('您当前的角色暂时无法查看，如需查看请联系管理员')
             }

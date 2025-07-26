@@ -1,8 +1,10 @@
 <template>
-    <div class="content_i" :style="{height:innerHeight > 800 ? '100vh' : 'auto'}">
+    <div class="content_i" :style="{height:'100vh'}">
             <div class="top">
                 <div class="top_con">
-                    <div class="top_title">{{title}}<div class="total_num">{{performance.cueerntMonthTotalPerformance ? performance.cueerntMonthTotalPerformance + 'w': '0w'}}</div></div>
+                    <div class="top_title">{{title}}<div class="total_num">{{performance.cueerntMonthTotalPerformance ? performance.cueerntMonthTotalPerformance + 'w': ' 0w'}}</div></div>
+                    
+                    <!-- <div class="line"></div> -->
                     <div class="bot_num">
                         <span>目标 <div class="num"> {{performance.totalPerformanceTarget ? performance.totalPerformanceTarget + 'w': ' -'}}</div></span>
                         <span class="bot_r">完成率 <div class="num">{{ performance.totalPerformanceTargetComplete ? performance.totalPerformanceTargetComplete + '%' : '-'}}</div></span>
@@ -10,14 +12,14 @@
                     <div class="bot_num" >
                         <span>
                             同比
-                            <div v-if="Math.sign(performance.totalPerformanceYearOnYear)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}</div>
-                            <div v-else-if="Math.sign(performance.totalPerformanceYearOnYear)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}</div>
+                            <div v-if="Math.sign(performance.totalPerformanceYearOnYear)== 1"> {{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></div>
+                            <div v-else-if="Math.sign(performance.totalPerformanceYearOnYear)== -1">{{ Math.abs(performance.totalPerformanceYearOnYear) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></div>
                             <div v-else>-</div>
                         </span>
                         <span class="bot_r">
                             环比
-                            <div v-if="Math.sign(performance.totalPerformanceChainratio)== 1"> <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceChainratio) + '%'}}</div>
-                            <div v-else-if="Math.sign(performance.totalPerformanceChainratio)== -1"><span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span>{{ Math.abs(performance.totalPerformanceChainratio) + '%'}}</div>
+                            <div v-if="Math.sign(performance.totalPerformanceChainratio)== 1"> {{ Math.abs(performance.totalPerformanceChainratio) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></div>
+                            <div v-else-if="Math.sign(performance.totalPerformanceChainratio)== -1">{{ Math.abs(performance.totalPerformanceChainratio) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></div>
                             <div v-else>-</div>
                         </span>
                     </div>
@@ -26,10 +28,12 @@
             <div class="center">
                 <div class="cen_left">
                     <div class="new_customer_con">
-                        <span class="new_customer">新客总业绩</span>
-                        <div class="total_num">{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': '0w'}}</div>
-
+                        <div class="new_customer"> 新客总业绩 </div>
+                        <div class="total_num">{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': ' 0w'}}</div>
                     </div>
+                    
+                    <!-- <div class="line"></div> -->
+                    <!-- <span class="target">目标<span>{{performance.newCustomerPerformanceTarget ? performance.newCustomerPerformanceTarget + 'w': ' -'}}</span></span> -->
                     <div class="cen_bot_w">
                         <div  class="t_con2">
                             <div class="t_h">目标</div>
@@ -39,7 +43,6 @@
                             <div  class="t_h">完成比率</div>
                             <span>{{performance.newCustomerPerformanceTargetComplete ? performance.newCustomerPerformanceTargetComplete : '-'}}</span>
                         </div>
-                        
                     </div>
                     <div class="cen_bot_w" >
                         <div class="t_con2">
@@ -61,18 +64,19 @@
                     </div>
                     <div class="cen_bot_w">
                         <div  class="t_con">
-                            <div class="t_h">业绩占比 {{performance.newCustomerPerformanceRatio ? performance.newCustomerPerformanceRatio + '%' : '-'}}</div></div>
+                            <div class="t_h">业绩占比 {{performance.newCustomerPerformanceRatio ? performance.newCustomerPerformanceRatio + '%' : '-'}}</div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="cen_left">
                     <div class="new_customer_con">
                         <span class="new_customer">老客总业绩</span>
-                        <div class="total_num">{{performance.currentMonthOldCustomerPerformance ? performance.currentMonthOldCustomerPerformance + 'w': '0w'}}</div>
-
-                        <!-- <span class="target">目标<span>{{performance.oldCustomerTarget ? performance.oldCustomerTarget +'w': ' -'}}</span></span> -->
+                        <div class="total_num">{{performance.currentMonthOldCustomerPerformance ? performance.currentMonthOldCustomerPerformance + 'w': ' 0w'}}</div>
                     </div>
+                    
                     <div class="cen_bot_w">
+                        
                         <div  class="t_con2">
                             <div class="t_h">目标</div>
                             <span>{{performance.oldCustomerTarget ? performance.oldCustomerTarget +'w': ' -'}}</span>
@@ -81,7 +85,6 @@
                             <div  class="t_h">完成比率</div>
                             <span>{{performance.oldCustomerTargetComplete ? performance.oldCustomerTargetComplete : '-'}}</span>
                         </div>
-                        
                     </div>
                     <div class="cen_bot_w" >
                         <div class="t_con2">
@@ -110,11 +113,11 @@
                 
             </div>
 
-            <div class="center">
+            <!-- <div class="center">
                 <div class="cen_left" style="padding:25px 10px;">
                     <div class="new_customer_con">
-                        <span class="new_customer">有效总业绩</span>
-                        <div class="total_num">{{performance.existPricePerformance ? performance.existPricePerformance + 'w': '0w'}}</div>
+                        <div class="new_customer">有效总业绩</div>
+                        <div class="total_num">{{performance.existPricePerformance ? performance.existPricePerformance + 'w': ' 0w'}}</div>
                     </div>
                     
                     <div class="cen_bot_w" >
@@ -147,12 +150,13 @@
                     <div class="new_customer_con">
                         <span class="new_customer">潜在总业绩</span>
                         <div class="total_num">{{performance.zeroPricePerformance ? performance.zeroPricePerformance + 'w': '0w'}}</div>
+
                     </div>
                     <div class="cen_bot_w" >
                         <div class="t_con2">
                             <div  class="t_h">同比</div>
                             <span>
-                                <span v-if="Math.sign(performance.zeroPricePerformanceYearOnYear)== 1">{{ Math.abs(performance.zeroPricePerformanceYearOnYear) + '%'}} <span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
+                                <span v-if="Math.sign(performance.zeroPricePerformanceYearOnYear)== 1"> {{ Math.abs(performance.zeroPricePerformanceYearOnYear) + '%'}}<span class="num red"><i class="iconfont icon-xiangshang1 icon_ziy"></i></span></span>
                                 <span v-else-if="Math.sign(performance.zeroPricePerformanceYearOnYear)== -1">{{ Math.abs(performance.zeroPricePerformanceYearOnYear) + '%'}}<span  class="num green"><i class="iconfont icon-xiangxia1 icon_ziy"></i></span></span>
                                 <span v-else>-</span>
                             </span>
@@ -173,7 +177,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+            
     </div>
 </template>
 <script>
@@ -213,19 +219,20 @@ export default {
         font-size: 12px;
         .top_con{
             width: 100%;
-            background-image: url(../../../../assets/dataCenter.png) ;
+            background-image: url(../../../assets/dataCenter.png) ;
             background-size: 100% 100%;
             border-radius: 10px/10px;
             padding: 10px;
             box-sizing: border-box;
             .top_title{
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
+                justify-content: space-between;
+                
             }
             .total_num{
                 color: #5492FE;
-                font-size: 16px;
+                font-size: 14px;
                 border-bottom: 2px solid #5492FE;
                 
             }
@@ -240,7 +247,7 @@ export default {
                 justify-content: space-between;
                 margin-top: 5px;
                 .num{
-                    font-size: 14px;
+                    font-size: 12px;
                     color: #5492FE;
                     .icon_ziy{
                         font-size: 10px;
@@ -284,6 +291,8 @@ export default {
                 align-items: center;
                 .new_customer{
                     font-size: 12px;
+                    
+                    
                 }
                 .target{
                     font-size: 12px;
@@ -291,7 +300,7 @@ export default {
                 }
             }
             .total_num{
-                font-size: 15px;
+                font-size: 14px;
                 color: #5492FE;
                 border-bottom: 2px solid #5492FE;
             }
@@ -327,7 +336,6 @@ export default {
                 .green{
                     color: red;
                 }
-                
                 }
                 .t_con2{
                     display: flex;
@@ -335,7 +343,7 @@ export default {
                     flex-direction: column;
                     .t_h{
                         // width: 30px;
-                        text-align: start;
+                        text-align: center;
                     }
                     .icon_ziy{
                         font-size: 10px;
@@ -344,9 +352,9 @@ export default {
                     color: green;
                 }
                 
-                    .green{
-                        color: red;
-                    }
+                .green{
+                    color: red;
+                }
                 }
                 .t_con1{
                     display: flex;

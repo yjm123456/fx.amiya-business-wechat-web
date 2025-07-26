@@ -6,24 +6,31 @@
                     <div class="left_item" :style="{background: item.id == active ? '#85a8ed' : '',}" @click="navClick(item.id)">{{item.name}}</div>
                 </div>
         </div>
-        <div class="right" v-if="active == 0">
-            <!-- 公司 -->
-            <corporatePerformance ref="corporatePerformance"/>
+      
+       <div v-if="active == 0"  class="right">
+            <!-- 分组 -->
+            <doctorDivideIntoGroups ref="doctorDivideIntoGroups" />
         </div>
-        <div v-if="active == 1"  class="right">
+         <div v-if="active == 1"  class="right">
+            <!-- 助理 -->
+            <doctorAssistant ref="doctorAssistant" />
+        </div>
+        <div v-if="active == 2"  class="right">
             <!-- 机构 -->
-            <corporatePerformanceHospital ref="corporatePerformanceHospital"/>
+            <doctorHospital ref="doctorHospital"/>
         </div>
     </div>
 </template>
 <script>
 import  * as api from "@/api/order.js";
-import corporatePerformance from "../components/corporatePerformance.vue"
-import corporatePerformanceHospital from "../components/corporatePerformanceHospital.vue"
+import doctorDivideIntoGroups from "./doctorDivideIntoGroups.vue"
+import doctorAssistant from "./doctorAssistant.vue"
+import doctorHospital from "./doctorHospital.vue"
 export default{
     components:{
-        corporatePerformance,
-        corporatePerformanceHospital
+        doctorDivideIntoGroups,
+        doctorAssistant,
+        doctorHospital
     },
     data(){
         return{
@@ -31,10 +38,14 @@ export default{
             nav:[
                 {
                     id:0,
-                    name:'公司'
+                    name:'分组'
                 },
                 {
                     id:1,
+                    name:'助理'
+                },
+                {
+                    id:2,
                     name:'医院'
                 },
             ],
@@ -46,13 +57,12 @@ export default{
         
         navClick(value){
             this.active = value
-            // sessionStorage.setItem('performanceleftActive',value)
+           
         },
 
     },
     created(){
         // this.active = this.$route.query.active
-        // this.active = sessionStorage.getItem('performanceleftActive') ? sessionStorage.getItem('performanceleftActive') : 0
     }
 }
 </script>
@@ -82,6 +92,7 @@ export default{
     .left{
         width: 60px;
         height: 100vh;
+        // background: linear-gradient(#5492FE,#f5f5f5);
         background:#709EF7;
         // border-radius: 10px;
         position: fixed;
