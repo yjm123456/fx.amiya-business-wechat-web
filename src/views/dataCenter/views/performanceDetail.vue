@@ -8,7 +8,9 @@
         </div>
         <div class="right" v-if="active == 0">
             <!-- 公司 -->
-            <corporatePerformance ref="corporatePerformance"/>
+            <!-- <corporatePerformance ref="corporatePerformance"/> -->
+            <!-- 分组 -->
+            <selfSowGroup  ref="selfSowGroup"/>
         </div>
         <div v-if="active == 1"  class="right">
             <!-- 机构 -->
@@ -20,10 +22,12 @@
 import  * as api from "@/api/order.js";
 import corporatePerformance from "../components/corporatePerformance.vue"
 import corporatePerformanceHospital from "../components/corporatePerformanceHospital.vue"
+import selfSowGroup from "../components/selfSowGroup.vue"
 export default{
     components:{
         corporatePerformance,
-        corporatePerformanceHospital
+        corporatePerformanceHospital,
+        selfSowGroup
     },
     data(){
         return{
@@ -31,7 +35,7 @@ export default{
             nav:[
                 {
                     id:0,
-                    name:'公司'
+                    name:'分组'
                 },
                 {
                     id:1,

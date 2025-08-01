@@ -1,7 +1,22 @@
 <template>
     <div>
-        <van-tabs v-model="active" title-active-color="#4C71F6">
+        <van-tabs v-model="active" title-active-color="#4C71F6" >
+            
             <van-tab title="自播达人">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>新客业绩</div>
+                        <div class="num">{{performance.selfLiveAnchorNewCustomerPerformance ? performance.selfLiveAnchorNewCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>老客业绩</div>
+                        <div  class="num">{{performance.selfLiveAnchorOldCustomerPerformance ? performance.selfLiveAnchorOldCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>总业绩</div>
+                        <div  class="num">{{performance.selfLiveAnchorPerformance ? performance.selfLiveAnchorPerformance :0}}</div>
+                    </div>
+                </div>
                 <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
@@ -27,6 +42,20 @@
                 <div class="button" @click="readSelfLiveAnchorDataDetal">查看详情</div>
             </van-tab>
             <van-tab title="合作达人">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>新客业绩</div>
+                        <div class="num">{{performance.otherLiveAnchorNewCustomerPerformance ? performance.otherLiveAnchorNewCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>老客业绩</div>
+                        <div  class="num">{{performance.otherLiveAnchorOldCustomerPerformance ? performance.otherLiveAnchorOldCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>总业绩</div>
+                        <div  class="num">{{performance.otherLiveAnchorPerformance ? performance.otherLiveAnchorPerformance : 0}}</div>
+                    </div>
+                </div>
                 <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
@@ -53,6 +82,20 @@
             </van-tab>
             <!-- 带货板块 -->
             <van-tab title="医生板块">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>新客业绩</div>
+                        <div class="num">{{performance.doctorNewCustomerPerformance ? performance.doctorNewCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>老客业绩</div>
+                        <div  class="num">{{performance.doctorOldCustomerPerformance ? performance.doctorOldCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>总业绩</div>
+                        <div  class="num">{{performance.doctorPerformance ? performance.doctorPerformance : 0}}</div>
+                    </div>
+                </div>
                 <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
@@ -78,6 +121,20 @@
                 <div class="button" @click="doctorDataDetail">查看详情</div>
             </van-tab>
             <van-tab title="其他收入">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>新客业绩</div>
+                        <div class="num">{{performance.otherNewCustomerPerformance ? performance.otherNewCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>老客业绩</div>
+                        <div  class="num">{{performance.otherOldCustomerPerformance ? performance.otherOldCustomerPerformance : 0}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>总业绩</div>
+                        <div  class="num">{{performance.otherPerformance ? performance.otherPerformance : 0}}</div>
+                    </div>
+                </div>
                 <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
@@ -149,15 +206,38 @@ export default{
 }
 </script>
 <style scoped lang="less">
+    .nav_item{
+        display: flex;
+        font-size: 12px;
+        justify-content: space-between;
+        align-items: center;
+        padding-top:10px;
+        box-sizing: border-box;
+        text-align: center;
+        margin-bottom: 10px;
+        .item{
+            width: 33%;
+            border-right: 1px solid #9AC1FF;
+            .num{
+                font-weight: bold;
+                font-size: 14px;
+            }
+        }
+        .item:last-child{
+            border: none;
+        }
+    }
     .nav{
         width: 100%;
         display: flex;
         font-size: 14px;
+        border-top: 1px solid #9AC1FF;
+        
         .nav_left{
             width: 49%;
             text-align: center;
             border-right:1px solid #9AC1FF;
-            margin-top: 30px;
+            // margin-top: 30px;
             .nav_num{
                 font-size: 20px;
                 margin: 10px 0;

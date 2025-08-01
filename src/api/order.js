@@ -519,3 +519,10 @@ export const getDoctorList = () => {
         method: "get",
     });
 };
+// 获取合作达人列表
+export const getCooperateLiveAnchor = () => {
+    return http({
+        url: `/businessWechat/LiveAnchorBaseInfo/getCooperateLiveAnchor`,
+        method: "get",
+    });
+};
