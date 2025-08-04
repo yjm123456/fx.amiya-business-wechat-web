@@ -28,7 +28,7 @@
             <div class="center">
                 <div class="cen_left">
                     <div class="new_customer_con">
-                        <div class="new_customer"> 新客总业绩 </div>
+                        <div class="new_customer">{{title == '总业绩' ? '新客总业绩' : '新客业绩'}}</div>
                         <div class="total_num">{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': ' 0w'}}</div>
                     </div>
                     
@@ -71,7 +71,7 @@
 
                 <div class="cen_left">
                     <div class="new_customer_con">
-                        <span class="new_customer">老客总业绩</span>
+                        <span class="new_customer">{{title == '总业绩' ? '老客总业绩' : '老客业绩'}}</span>
                         <div class="total_num">{{performance.currentMonthOldCustomerPerformance ? performance.currentMonthOldCustomerPerformance + 'w': ' 0w'}}</div>
                     </div>
                     

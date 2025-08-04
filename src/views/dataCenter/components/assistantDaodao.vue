@@ -39,15 +39,16 @@
                     <div>老客上门 <span>{{item.oldCustomerVisitCount}}人</span></div>
                 </div>
                 <div class="item">
-                    <div>上门率 <span>{{item.visitNumRatio}}%</span></div>
-                    <div>成交率 <span>{{item.dealNumRatio}}%</span></div>
-                    <div>复购率 <span>{{item.buyAgainNumRatio}}%</span></div>
+                    <div>上门率 <span :style="{color:item.visitNumRatio > item.visitNumHealthNumber ? 'green' : item.visitNumRatio < item.visitNumHealthNumber ? 'red' : '#5492FE'}">{{item.visitNumRatio}}%</span></div>
+                    <div>成交率 <span :style="{color:item.dealNumRatio > item.dealNumHealthNumber ? 'green' : item.dealNumRatio < item.dealNumHealthNumber ? 'red' : '#5492FE'}">{{item.dealNumRatio}}%</span></div>
+                    <div>复购率 <span :style="{color:item.buyAgainNumRatio > item.buyAgainNumHealthNumber ? 'green' : item.buyAgainNumRatio < item.buyAgainNumHealthNumber ? 'red' : '#5492FE'}">{{item.buyAgainNumRatio}}%</span></div>
                 </div>
             </div>
        </div>
        <!-- <div class="no_data" :style="{height:!performance ? '90%' : '5px',position:'absolute',bottom:!performance ? '40%' : '0px'}">没有更多了</div> -->
        <!-- <div class="no_data" v-if="!performance" :style="{height:!performance ? '94%' : '5px',position:'absolute',bottom:!performance ? '0' : '30px',left:'49%'}">没有更多了</div> -->
        <div class="no_data"  v-if="performance.length >0">没有更多了</div>
+       <div  v-if="performance.length == 0 || performance == []" style="padding-top:100px;text-align:center;font-size:12px;color:#fff">暂无数据</div>
     </div>
     <van-loading size="24px" vertical text-color="#fff" color="#fff" style="height:100vh;padding:100px 0 0 50px" v-else>加载中...</van-loading>
 </template>

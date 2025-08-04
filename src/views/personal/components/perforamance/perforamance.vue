@@ -26,7 +26,7 @@
             <div class="center">
                 <div class="cen_left">
                     <div class="new_customer_con">
-                        <span class="new_customer">新客总业绩</span>
+                        <span class="new_customer">{{title == '总业绩' ? '新客总业绩' : '新客业绩'}}</span>
                         <div class="total_num">{{performance.currentMonthNewCustomerPerformance ? performance.currentMonthNewCustomerPerformance + 'w': '0w'}}</div>
 
                     </div>
@@ -67,7 +67,7 @@
 
                 <div class="cen_left">
                     <div class="new_customer_con">
-                        <span class="new_customer">老客总业绩</span>
+                        <span class="new_customer">{{title == '总业绩' ? '老客总业绩' : '老客业绩'}}</span>
                         <div class="total_num">{{performance.currentMonthOldCustomerPerformance ? performance.currentMonthOldCustomerPerformance + 'w': '0w'}}</div>
 
                         <!-- <span class="target">目标<span>{{performance.oldCustomerTarget ? performance.oldCustomerTarget +'w': ' -'}}</span></span> -->
@@ -113,7 +113,7 @@
             <div class="center">
                 <div class="cen_left" style="padding:25px 10px;">
                     <div class="new_customer_con">
-                        <span class="new_customer">有效总业绩</span>
+                        <span class="new_customer">{{title == '总业绩' ? '有效总业绩' : '有效业绩'}}</span>
                         <div class="total_num">{{performance.existPricePerformance ? performance.existPricePerformance + 'w': '0w'}}</div>
                     </div>
                     
@@ -145,7 +145,7 @@
 
                 <div class="cen_left" style="padding:25px 10px;">
                     <div class="new_customer_con">
-                        <span class="new_customer">潜在总业绩</span>
+                        <span class="new_customer">{{title == '总业绩' ? '潜在总业绩' : '潜在业绩'}}</span>
                         <div class="total_num">{{performance.zeroPricePerformance ? performance.zeroPricePerformance + 'w': '0w'}}</div>
                     </div>
                     <div class="cen_bot_w" >

@@ -17,7 +17,49 @@
                         <div  class="num">{{performance.selfLiveAnchorPerformance ? performance.selfLiveAnchorPerformance :0}}</div>
                     </div>
                 </div>
-                <div class="nav">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>完成率</div>
+                        <div class="num">{{performance.selfLiveAnchorNewCustomerPerformanceCompleteRate ? performance.selfLiveAnchorNewCustomerPerformanceCompleteRate + '%': '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">{{performance.selfLiveAnchorOldCustomerPerformanceCompleteRate ? performance.selfLiveAnchorOldCustomerPerformanceCompleteRate+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">{{performance.selfLiveAnchorPerformanceCompleteRate ? performance.selfLiveAnchorPerformanceCompleteRate+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>同比</div>
+                        <div class="num">{{performance.selfLiveAnchorNewCustomerPerformanceYearToYear ? performance.selfLiveAnchorNewCustomerPerformanceYearToYear+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">{{performance.selfLiveAnchorOldCustomerPerformanceYearToYear ? performance.selfLiveAnchorOldCustomerPerformanceYearToYear+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">{{performance.otherLiveAnchorNewCustomerPerformanceYearToYear ? performance.otherLiveAnchorNewCustomerPerformanceYearToYear+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>环比</div>
+                        <div class="num">{{performance.selfLiveAnchorNewCustomerPerformanceChainRatio ? performance.selfLiveAnchorNewCustomerPerformanceChainRatio+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">{{performance.selfLiveAnchorOldCustomerPerformanceChainRatio ? performance.selfLiveAnchorOldCustomerPerformanceChainRatio+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">{{performance.selfLiveAnchorPerformanceChainRatio ? performance.selfLiveAnchorPerformanceChainRatio+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <!-- <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
                         <div class="nav_num">{{performance.selfLiveAnchorPerformanceCompleteRate ? performance.selfLiveAnchorPerformanceCompleteRate + '%' : '0%'}}</div>
@@ -38,7 +80,7 @@
                             <div  class="nav_num" v-else>0%</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="button" @click="readSelfLiveAnchorDataDetal">查看详情</div>
             </van-tab>
             <van-tab title="合作达人">
@@ -56,7 +98,49 @@
                         <div  class="num">{{performance.otherLiveAnchorPerformance ? performance.otherLiveAnchorPerformance : 0}}</div>
                     </div>
                 </div>
-                <div class="nav">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>完成率</div>
+                        <div class="num">{{performance.otherLiveAnchorNewCustomerPerformanceCompleteRate ? performance.otherLiveAnchorNewCustomerPerformanceCompleteRate + '%': '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">{{performance.otherLiveAnchorOldCustomerPerformanceCompleteRate ? performance.otherLiveAnchorOldCustomerPerformanceCompleteRate+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">{{performance.otherLiveAnchorPerformanceCompleteRate ? performance.otherLiveAnchorPerformanceCompleteRate+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>同比</div>
+                        <div class="num">{{performance.otherLiveAnchorNewCustomerPerformanceYearToYear ? performance.otherLiveAnchorNewCustomerPerformanceYearToYear+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">{{performance.otherLiveAnchorOldCustomerPerformanceYearToYear ? performance.otherLiveAnchorOldCustomerPerformanceYearToYear+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">{{performance.otherLiveAnchorPerformanceYearToYear ? performance.otherLiveAnchorPerformanceYearToYear+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>环比</div>
+                        <div class="num">{{performance.otherLiveAnchorNewCustomerPerformanceChainRatio ? performance.otherLiveAnchorNewCustomerPerformanceChainRatio+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">{{performance.otherLiveAnchorOldCustomerPerformanceChainRatio ? performance.otherLiveAnchorOldCustomerPerformanceChainRatio+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">{{performance.otherLiveAnchorPerformanceChainRatio ? performance.otherLiveAnchorPerformanceChainRatio+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <!-- <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
                         <div class="nav_num">{{performance.otherLiveAnchorPerformanceCompleteRate ? performance.otherLiveAnchorPerformanceCompleteRate + '%' : '0%'}}</div>
@@ -77,7 +161,7 @@
                             <div  class="nav_num" v-else>0%</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="button"  @click="readCooperateLiveAnchorDataDetail">查看详情</div>
             </van-tab>
             <!-- 带货板块 -->
@@ -96,7 +180,49 @@
                         <div  class="num">{{performance.doctorPerformance ? performance.doctorPerformance : 0}}</div>
                     </div>
                 </div>
-                <div class="nav">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>完成率</div>
+                        <div class="num">{{performance.doctorNewCustomerPerformanceCompleteRate ? performance.doctorNewCustomerPerformanceCompleteRate + '%': '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">{{performance.doctorOldCustomerPerformanceCompleteRate ? performance.doctorOldCustomerPerformanceCompleteRate+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">{{performance.doctorPerformanceCompleteRate ? performance.doctorPerformanceCompleteRate+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>同比</div>
+                        <div class="num">{{performance.doctorNewCustomerPerformanceYearToYear ? performance.doctorNewCustomerPerformanceYearToYear+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">{{performance.doctorOldCustomerPerformanceYearToYear ? performance.doctorOldCustomerPerformanceYearToYear+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">{{performance.doctorPerformanceYearToYear ? performance.doctorPerformanceYearToYear+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>环比</div>
+                        <div class="num">{{performance.doctorNewCustomerPerformanceChainRatio ? performance.doctorNewCustomerPerformanceChainRatio+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">{{performance.doctorOldCustomerPerformanceChainRatio ? performance.doctorOldCustomerPerformanceChainRatio+ '%' : '0%'}}</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">{{performance.doctorPerformanceChainRatio ? performance.doctorPerformanceChainRatio+ '%' :'0%'}}</div>
+                    </div>
+                </div>
+                <!-- <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
                         <div class="nav_num">{{performance.doctorPerformanceCompleteRate ? performance.doctorPerformanceCompleteRate + '%' : '0%'}}</div>
@@ -117,7 +243,7 @@
                             <div  class="nav_num" v-else>0%</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="button" @click="doctorDataDetail">查看详情</div>
             </van-tab>
             <van-tab title="其他收入">
@@ -135,7 +261,49 @@
                         <div  class="num">{{performance.otherPerformance ? performance.otherPerformance : 0}}</div>
                     </div>
                 </div>
-                <div class="nav">
+                <div class="nav_item">
+                    <div class="item">
+                        <div>完成率</div>
+                        <div class="num">0%</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">0%</div>
+                    </div>
+                    <div  class="item">
+                        <div>完成率</div>
+                        <div  class="num">0%</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>同比</div>
+                        <div class="num">0%</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">0%</div>
+                    </div>
+                    <div  class="item">
+                        <div>同比</div>
+                        <div  class="num">0%</div>
+                    </div>
+                </div>
+                <div class="nav_item">
+                    <div class="item">
+                        <div>环比</div>
+                        <div class="num">0%</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">0%</div>
+                    </div>
+                    <div  class="item">
+                        <div>环比</div>
+                        <div  class="num">0%</div>
+                    </div>
+                </div>
+                <!-- <div class="nav">
                     <div class="nav_left">
                         <div>完成率</div>
                         <div class="nav_num">{{performance.otherPerformanceCompleteRate ? performance.otherPerformanceCompleteRate + '%' : '0%'}}</div>
@@ -156,7 +324,7 @@
                             <div  class="nav_num" v-else>0%</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="button" @click="detail">查看详情</div>
             </van-tab>
 
@@ -211,13 +379,17 @@ export default{
         font-size: 12px;
         justify-content: space-between;
         align-items: center;
-        padding-top:10px;
-        box-sizing: border-box;
+        // padding-top:10px;
+        // box-sizing: border-box;
         text-align: center;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
+        border-bottom: 1px solid #9AC1FF;
         .item{
             width: 33%;
             border-right: 1px solid #9AC1FF;
+            padding:5px 0;
+            box-sizing: border-box;
+            
             .num{
                 font-weight: bold;
                 font-size: 14px;

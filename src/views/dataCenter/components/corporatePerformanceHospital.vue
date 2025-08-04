@@ -48,6 +48,7 @@
                 </div>
             </div>
             <div class="no_data" v-if="performance.length>1">没有更多了</div>
+            <div  v-if="performance.length == 0 || performance == []" style="padding-top:100px;text-align:center;font-size:12px;color:#fff">暂无数据</div>
             <van-popup v-model="timeModel" position="bottom" style="height: 50%" round >
                 <van-datetime-picker
                     v-model="currentDate"

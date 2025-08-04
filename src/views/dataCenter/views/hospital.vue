@@ -5,6 +5,7 @@
                 <span>{{time}}</span>
                 <i class="iconfont icon-xiangxia time_icon"></i>
             </div>
+            <div  v-if="performance.length == 0 || performance == []" style="padding-top:100px;text-align:center;font-size:12px;color:#fff">暂无数据</div>
             <div class="chart_content" v-if="performance.length>1">
                 <hospitalChart :performance="performance"/>
             </div>

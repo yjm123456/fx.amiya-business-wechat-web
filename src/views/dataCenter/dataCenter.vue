@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <div class="top">
-            <span class="t_t">总业绩</span>
+            <span class="t_t"></span>
             <span  @click="timeClick">{{time}}</span>
         </div>
         <!--时间弹窗 -->
@@ -16,7 +16,7 @@
                 @confirm="timeConfirm"
             />
         </van-popup> 
-        <div class="money_con"><span>￥</span><span>{{performance.totalPerformance ? performance.totalPerformance : 0}}</span></div>
+        <!-- <div class="money_con"><span>￥</span><span>{{performance.totalPerformance ? performance.totalPerformance : 0}}</span></div>
         <div class="ring"  v-if="Math.sign(performance.totalPerformanceChainRatio)== 1"> 
             <span class="ring_num"><span style="font-size:16px">环比</span> {{ '+' +performance.totalPerformanceChainRatio + '%'}}</span>
             <i class="iconfont icon-cs-jt-xs-1-1 jiantou"></i>
@@ -24,6 +24,21 @@
         <div class="ring"  v-if="Math.sign(performance.totalPerformanceChainRatio)== -1">
             <span class="ring_num2"><span style="font-size:16px">环比</span> {{performance.totalPerformanceChainRatio+ '%'}}</span>
             <i class="iconfont icon-cs-jt-xx-1-1 jiantou2"></i>
+        </div> -->
+        <div class="item_con">
+            <div class="item">
+                <div>新客业绩</div>
+                <div class="money">￥{{performance.newCustomerPerformance ? performance.newCustomerPerformance : 0}}</div>
+            </div>
+            <div class="item">
+                <div>老客业绩</div>
+                <div  class="money">￥{{performance.oldCustomerPerformance ? performance.oldCustomerPerformance : 0}}</div>
+                
+            </div>
+            <div class="item">
+                <div>总业绩</div>
+                <div  class="money">￥{{performance.totalPerformance ? performance.totalPerformance : 0}}</div>
+            </div>
         </div>
         <!-- 环形图 -->
         <div class="chart_content">
@@ -82,7 +97,7 @@ export default{
             }
             api.TotalPerformance(data).then((res)=>{
                 if(res.code === 0){
-                    const {selfLiveAnchorPerformance,otherLiveAnchorPerformance,commercePerformance,otherPerformance} = res.data.performance
+                    const {selfLiveAnchorPerformance,otherLiveAnchorPerformance,commercePerformance,doctorPerformance,otherPerformance} = res.data.performance
                     this.performance = res.data.performance
                     let proportion = []
                     proportion.push({
@@ -92,8 +107,8 @@ export default{
                         name:'合作达人',
                         value:otherLiveAnchorPerformance
                     },{
-                        name:'带货业绩',
-                        value:commercePerformance
+                        name:'医生业绩',
+                        value:doctorPerformance
                     },{
                         name:'其他业绩',
                         value:otherPerformance
@@ -153,6 +168,23 @@ export default{
             padding-left: 140px;
             box-sizing: border-box;
             text-align: center;
+        }
+    }
+    .item_con{
+        display: flex;
+        justify-content: space-around;
+        font-size: 12px;
+        margin: 10px 0 ;
+        .item{
+            width: 33%;
+            border-right: 1px solid #fff;
+            text-align: center;
+            .money{
+                margin: 5px 0 ;
+            }
+        }
+        .item:last-child{
+            border: none;
         }
     }
     .money_con{
